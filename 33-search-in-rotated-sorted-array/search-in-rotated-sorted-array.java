@@ -17,7 +17,7 @@ class Solution {
                     s = m+1 ;
                 }
             }
-            else if(nums[m]<nums[e]){
+            else if(nums[m]<=nums[e]){
                 if(nums[m]<target && nums[e]>= target){
                     s = m+1;
                 }
