@@ -14,13 +14,13 @@ public class Solution {
         ListNode p1 = headA;
         ListNode p2 = headB;
         while(p1!=p2){
-            if(p1==null){
+            if(p1 == null){
                 p1 = headB;
             }
             else {
                 p1 = p1.next ;
             }
-            if(p2==null){
+            if(p2 == null){
                 p2 = headA;
             }
             else {
