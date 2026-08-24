@@ -1,18 +1,17 @@
 class Solution {
-    public List<List<Integer>> printSubsets(int i, int[]nums, List<Integer>li, List<List<Integer>> list){
-        if(i==nums.length){
+    public List<List<Integer>> printsubsets(List<List<Integer>>list, List<Integer>li,int i,int[] nums) {
+        if(i>=nums.length){
             list.add(new ArrayList<>(li));
             return list;
         }
         li.add(nums[i]);
-        printSubsets(i+1, nums, li, list);
+        printsubsets(list,li,i+1,nums);
         li.remove(li.size()-1);
-        printSubsets(i+1, nums, li, list);
-        return list ;
+        printsubsets(list,li,i+1,nums);
+        return list;
     }
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>>list = new ArrayList<>();
-        printSubsets(0, nums, new ArrayList<>(), list);
-        return list ;
+        return printsubsets(list, new ArrayList<>(), 0, nums);
     }
 }
