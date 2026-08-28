@@ -1,55 +1,28 @@
 class Solution {
-
-    public void answer(
-            int[] nums,
-            List<List<Integer>> list,
-            List<Integer> li,
-            boolean[] used) {
-
-        // Base case
-        if (li.size() == nums.length) {
+    public List<List<Integer>> answer(int[] nums, List<List<Integer>> list, List<Integer> li, boolean[] used){
+        if(li.size()==nums.length){
             list.add(new ArrayList<>(li));
-            return;
+            return list ;
         }
-
-        // Try every index
-        for (int i = 0; i < nums.length; i++) {
-
-            // This INDEX is already used
-            if (used[i]) {
+        for(int i=0; i<nums.length; i++){
+            if(used[i]){
                 continue;
             }
-
-            // Duplicate skip
-            if (i > 0 &&
-                nums[i] == nums[i - 1] &&
-                !used[i - 1]) {
-                continue;
+            if(i > 0 && nums[i] == nums[i-1] && !used[i-1]){
+                continue ;
             }
-
-            // TAKE
             li.add(nums[i]);
-            used[i] = true;
-
-            // RECURSION
+            used[i] = true ;
             answer(nums, list, li, used);
-
-            // BACKTRACK
-            li.remove(li.size() - 1);
-            used[i] = false;
+            li.remove(li.size()-1);
+            used[i] = false ;
         }
-    }
-
-    public List<List<Integer>> permuteUnique(int[] nums) {
-
-        Arrays.sort(nums);
-
-        List<List<Integer>> list = new ArrayList<>();
-
-        boolean[] used = new boolean[nums.length];
-
-        answer(nums, list, new ArrayList<>(), used);
-
         return list;
+    }
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        boolean [] used = new boolean[nums.length];
+        return answer(nums, result, new ArrayList<>(), used);
     }
 }
