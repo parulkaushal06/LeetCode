@@ -1,10 +1,10 @@
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
-        int n = nums.length ; 
         Stack<Integer> st = new Stack<>();
+        int n = nums.length ;
         int[] answers = new int[n];
         for(int i=0; i<n; i++){
-            answers[i] = -1;
+            answers[i] = -1 ;
         }
         for(int i=0; i<2*n; i++){
             int idx = i%n;
