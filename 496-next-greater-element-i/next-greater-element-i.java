@@ -12,7 +12,7 @@ class Solution {
                 for(int j=0; j<n; j++){
                     if(nums1[j]==nums2[prev]){
                         answers[j] = nums2[i];
-                        break;
+                        break ;
                     }
                 }
             }
