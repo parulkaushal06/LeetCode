@@ -13,7 +13,7 @@ class MinStack {
             minSt.push(value);
         }
         else {
-            minSt.push(Math.min(minSt.peek(), value));
+            minSt.push(Math.min(value, minSt.peek()));
         }
     }
     
