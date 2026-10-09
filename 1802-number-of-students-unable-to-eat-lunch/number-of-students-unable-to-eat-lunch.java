@@ -10,7 +10,7 @@ class Solution {
         }
         int count = 0 ;
         while(!q.isEmpty() && count < q.size()){
-            if(q.peek()==st.peek()){
+            if(q.peek() == st.peek()){
                 q.poll();
                 st.pop();
                 count = 0 ;
@@ -20,6 +20,6 @@ class Solution {
                 count ++ ;
             }
         }
-        return q.size();
+        return st.size();
     }
-}   
+}
