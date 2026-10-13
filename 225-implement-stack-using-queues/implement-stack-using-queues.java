@@ -1,7 +1,6 @@
 class MyStack {
     Queue<Integer> q1 = new LinkedList<>();
     Queue<Integer> q2 = new LinkedList<>();
-
     public MyStack() {
         
     }
@@ -15,7 +14,6 @@ class MyStack {
         q1 = q2 ;
         q2 = temp ;
     }
-    
     public int pop() {
         return q1.poll();
     }
