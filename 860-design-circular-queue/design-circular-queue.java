@@ -48,7 +48,7 @@ class MyCircularQueue {
     }
     
     public int Rear() {
-        if(size == 0 || rear == -1){
+        if(size == 0 || front == -1){
             return -1 ;
         }
         return arr[rear];
