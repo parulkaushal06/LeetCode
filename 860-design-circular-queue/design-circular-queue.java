@@ -35,7 +35,10 @@ class MyCircularQueue {
             front = -1 ;
             rear = -1 ;
         }
-        front = (front+1)%capacity ;
+        else{
+            front = (front+1)%capacity ;
+        }
+        
         size--;
         return true ;
     }
