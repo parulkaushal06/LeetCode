@@ -14,34 +14,31 @@
  * }
  */
 class Solution {
-    public int levelOrder(TreeNode root){
+    public int levelwise(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<>();
         int count = 0 ;
-        List<List<Integer>> result = new ArrayList<>();
-        if(root == null){
+        if(root== null){
             return 0;
         }
-        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while(!queue.isEmpty()){
             int size = queue.size();
-            List<Integer> level = new ArrayList<>();
             for(int i=0; i<size; i++){
-                TreeNode node = queue.poll();
-                level.add(node.val);
-                if(node.left!=null){
-                    queue.offer(node.left);
+                TreeNode rootval = queue.poll();
+                
+                if(rootval.left!= null){
+                    queue.offer(rootval.left);
                 }
-                if(node.right!=null){
-                    queue.offer(node.right);
+                if(rootval.right!=null){
+                    queue.offer(rootval.right);
                 }
+                
             }
-            result.add(level);
-            count++;
+            count ++ ;
         }
         return count ;
     }
     public int maxDepth(TreeNode root) {
-        int count = levelOrder(root);
-        return count ;
+        return levelwise(root);
     }
 }
