@@ -1,15 +1,15 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        int currMax = nums[0];
-        int currMin = nums[0];
+        int currmin = nums[0];
+        int currmax = nums[0];
         int maxProduct = nums[0];
         for(int i=1; i<nums.length; i++){
-            int oldMin = currMin ;
-            int oldMax = currMax ;
-            currMax = Math.max(nums[i], Math.max(nums[i]*oldMin, nums[i]*oldMax));
-            currMin = Math.min(nums[i], Math.min(nums[i]*oldMin, nums[i]*oldMax));
-            maxProduct = Math.max(maxProduct, currMax);
+            int oldmin = currmin ;
+            int oldmax = currmax ;
+            currmax = Math.max(nums[i], Math.max(nums[i]*oldmin, nums[i]*oldmax));
+            currmin = Math.min(nums[i], Math.min(nums[i]*oldmin, nums[i]*oldmax));
+            maxProduct = Math.max(maxProduct, currmax);
         }
-        return maxProduct ;
+        return maxProduct;
     }
 }
