@@ -5,9 +5,9 @@ class Solution {
         int leftMax = 0 ;
         int rightMax = 0 ;
         int water = 0 ;
-        while(left <= right){
+        while(left <=right){
             if(height[left]<=height[right]){
-                if(height[left]> leftMax){
+                if(height[left]>leftMax){
                     leftMax = height[left];
                 }
                 else{
