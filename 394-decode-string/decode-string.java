@@ -1,56 +1,54 @@
 class Solution {
     public String decodeString(String s) {
 
-        Stack<String> st = new Stack<>();
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> stringStack = new Stack<>();
+
+        String current = "";
+        int number = 0;
 
         for(int i = 0; i < s.length(); i++) {
 
             char c = s.charAt(i);
 
-            // Normal character
-            if(c != ']') {
-                st.push(String.valueOf(c));
+            // Number
+            if(Character.isDigit(c)) {
+
+                number = number * 10 + (c - '0');
             }
 
-            else {
-                // Step 1: ] se pehle wali string nikalo
-                String str = "";
+            // Opening bracket
+            else if(c == '[') {
 
-                while(!st.peek().equals("[")) {
-                    str = st.pop() + str;
-                }
+                countStack.push(number);
+                stringStack.push(current);
 
-                // [ remove
-                st.pop();
+                number = 0;
+                current = "";
+            }
 
-                // Step 2: number nikalo
-                String num = "";
+            // Closing bracket
+            else if(c == ']') {
 
-                while(!st.empty() && Character.isDigit(st.peek().charAt(0))) {
-                    num = st.pop() + num;
-                }
+                int count = countStack.pop();
+                String previous = stringStack.pop();
 
-                int count = Integer.parseInt(num);
-
-                // Step 3: string repeat karo
                 String temp = "";
 
                 for(int j = 0; j < count; j++) {
-                    temp += str;
+                    temp += current;
                 }
 
-                // Step 4: decoded string wapas stack mein
-                st.push(temp);
+                current = previous + temp;
+            }
+
+            // Normal character
+            else {
+
+                current += c;
             }
         }
 
-        // Stack ke saare elements join karo
-        String ans = "";
-
-        while(!st.empty()) {
-            ans = st.pop() + ans;
-        }
-
-        return ans;
+        return current;
     }
 }
